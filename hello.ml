@@ -1,0 +1,1 @@
+let _ = print_endline "Learning Ocaml for fun"
