@@ -90,4 +90,42 @@ Here, `'a` represents a type variable called alpha. It just signifies that the t
 
 More importantly, the expression shows us that an identity function recives a value of type `'a` and returns value of same type `'a`.
 
+Partial Application
+
+1.
+```ocaml
+let add x y = x + y
+```
+
+This function takes two arguments x and y and returns its sum.
+
+However, there is another way to write it -
+
+2.
+```ocaml
+let addx x = fun y -> x + y
+```
+
+Now you can use it as :
+
+```ocaml
+let add5 = addx 5
+add5 2
+```
+
+This way you can `partially apply` the inputs, this is called partial application.
+
+Something unique in ocaml is that both `1` & `2` are one and same, i.e even the function 
+`add` can be used like we used `addx`.
+
+```ocaml
+let add5 = add 5
+add5 2
+```
+
+This is because in ocaml both those function are syntatically different but sementically equivalent.
+Every function even with multiple arguments, actually partially applying the arguments by returning a function that uses the previous argument.
+
+This is something that I had a hard time understanding earlier as to why someone would do it this way,
+but partially applying inputs makes composing functions very easy and also easy to reason about the data flow between those functions.
 
